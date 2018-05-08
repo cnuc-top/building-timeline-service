@@ -4,12 +4,16 @@ module.exports = app => {
   const Building = app.model.define(
     'buildings',
     {
+      code: {
+        type: STRING(255),
+        allowNull: false
+      },
       name: {
-        type: STRING,
+        type: STRING(255),
         allowNull: false
       },
       city: {
-        type: STRING,
+        type: STRING(255),
         allowNull: false
       },
       height: {

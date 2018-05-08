@@ -3,12 +3,15 @@ module.exports = app => {
   const { SVGFILE_TYPE } = require('../common/const')
   const Svgfile = app.model.define('svgfiles', {
     content: {
-      type: STRING,
+      type: TEXT,
       allowNull: false
     },
     type: {
       type: INTEGER,
       allowNull: false
+    },
+    fill: {
+      type: STRING
     }
   })
 
