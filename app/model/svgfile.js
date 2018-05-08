@@ -11,7 +11,8 @@ module.exports = app => {
       allowNull: false
     },
     fill: {
-      type: STRING
+      type: STRING,
+      defaultValue: ''
     }
   })
 

@@ -4,11 +4,41 @@ const Controller = require('egg').Controller
 
 class BuildingController extends Controller {
   async list() {
-    this.ctx.body = 'hi, egg'
+    const { ctx } = this
+    const data = await ctx.model.Building.findAll({
+      include: [
+        {
+          model: ctx.model.Svgfile,
+          attributes: ['type', 'content', 'fill']
+        },
+        {
+          model: ctx.model.Process,
+          attributes: ['date', 'basic', 'layers', 'seconds']
+        }
+      ]
+    })
+    ctx.body = data
   }
 
   async id() {
-    this.ctx.body = 'hi, egg'
+    const { ctx } = this
+    const { id } = ctx.params
+    const data = await ctx.model.Building.findOne({
+      where: {
+        id
+      },
+      include: [
+        {
+          model: ctx.model.Svgfile,
+          attributes: ['type', 'content', 'fill']
+        },
+        {
+          model: ctx.model.Process,
+          attributes: ['date', 'basic', 'layers', 'seconds']
+        }
+      ]
+    })
+    ctx.body = data
   }
 }
 

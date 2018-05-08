@@ -18,7 +18,7 @@ module.exports = app => {
         allowNull: false,
         defaultValue: 0
       },
-      seound: {
+      seconds: {
         type: INTEGER,
         allowNull: false,
         defaultValue: 0
