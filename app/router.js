@@ -9,4 +9,11 @@ module.exports = app => {
   // router.get('/addbuilds', controller.home.addbuilds)
   router.get('/v1/buildings', controller.building.list)
   router.get('/v1/buildings/:id', controller.building.id)
+
+  router.post('/v1/process', controller.process.create)
+  router.post('/v1/contributes', controller.contribut.create)
+
+
+  router.get('/v1/upload/token', controller.upload.token)
+
 }
