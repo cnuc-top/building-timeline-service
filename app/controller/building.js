@@ -20,6 +20,18 @@ class BuildingController extends Controller {
     ctx.body = data
   }
 
+  async contributes() {
+    const { ctx } = this
+    const { bid } = ctx.params
+    const data = await ctx.model.Contribute.findAll({
+      attributes: ['date', 'content', 'picUrl', 'type'],
+      where: {
+        bid
+      }
+    })
+    ctx.body = data
+  }
+
   async id() {
     const { ctx } = this
     const { id } = ctx.params
@@ -34,7 +46,7 @@ class BuildingController extends Controller {
         },
         {
           model: ctx.model.Process,
-          attributes: ['date', 'basic', 'layers', 'seconds']
+          attributes: ['basic', 'layers', 'seconds']
         }
       ]
     })

@@ -1,4 +1,5 @@
 const Controller = require('egg').Controller
+const to = require('../utils/to')
 
 class contributeController extends Controller {
   async deleteId() {
@@ -17,17 +18,21 @@ class contributeController extends Controller {
 
   async create() {
     const { ctx } = this
-    const { bid, content, picUrl, userid = 1 } = ctx.request.body
+    const { bid, content, picUrl, date, type } = ctx.request.body
+    let err, data
 
     const create = {
       bid,
       content,
       picUrl,
-      userid
+      userid: 1,
+      date,
+      type
     }
 
-    await ctx.model.Contribute.create(create)
-    ctx.body = create
+    const ret = await ctx.model.Contribute.create(create)
+
+    ctx.body = { id: ret.id }
   }
 }
 

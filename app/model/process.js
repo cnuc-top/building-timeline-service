@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 module.exports = app => {
   const { STRING, TEXT, INTEGER, BOOLEAN, DATE } = app.Sequelize
 
@@ -29,14 +31,19 @@ module.exports = app => {
         {
           fields: ['date']
         }
-      ]
+      ],
+      getterMethods: {
+        viewDate() {
+          return moment(this.date).format('YYYY年MM月DD日')
+        }
+      }
     }
   )
 
   Process.associate = function() {
     app.model.Process.belongsTo(app.model.Building, {
       as: 'building',
-      foreignKey: 'bid',
+      foreignKey: 'bid'
     })
   }
 

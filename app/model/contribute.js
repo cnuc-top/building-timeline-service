@@ -12,21 +12,34 @@ module.exports = app => {
         type: INTEGER,
         defaultValue: 0
       },
+      type: {
+        type: INTEGER,
+        defaultValue: 1
+      },
+      content: {
+        type: STRING,
+        defaultValue: ''
+      },
       isActive: {
         type: BOOLEAN,
         defaultValue: false
       }
     },
     {
-      indexes: []
+      indexes: [],
+      getterMethods: {
+        viewDate() {
+          return moment(this.date).format('YYYY年MM月DD日')
+        }
+      }
     }
   )
   Contribute.associate = function() {
     app.model.Contribute.belongsTo(app.model.Building, {
-      foreignKey: ['bid']
+      foreignKey: 'bid'
     })
     app.model.Contribute.belongsTo(app.model.User, {
-      foreignKey: ['userid']
+      foreignKey: 'userid'
     })
   }
   return Contribute
