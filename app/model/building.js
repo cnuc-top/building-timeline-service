@@ -16,6 +16,18 @@ module.exports = app => {
         type: STRING(255),
         allowNull: false
       },
+      picUrl: {
+        type: STRING(255),
+        allowNull: false
+      },
+      webUrl: {
+        type: STRING(255),
+        allowNull: false
+      },
+      company: {
+        type: STRING(255),
+        allowNull: false
+      },
       height: {
         type: FLOAT,
         allowNull: false

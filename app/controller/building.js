@@ -5,7 +5,12 @@ const Controller = require('egg').Controller
 class BuildingController extends Controller {
   async list() {
     const { ctx } = this
+    const { city } = ctx.query
     const data = await ctx.model.Building.findAll({
+      order: [['height', 'DESC']],
+      where: {
+        city
+      },
       include: [
         {
           model: ctx.model.Svgfile,
@@ -46,7 +51,7 @@ class BuildingController extends Controller {
         },
         {
           model: ctx.model.Process,
-          attributes: ['basic', 'layers', 'seconds']
+          attributes: ['date', 'basic', 'layers', 'seconds']
         }
       ]
     })

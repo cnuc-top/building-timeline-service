@@ -6,10 +6,7 @@ module.exports = app => {
   const Process = app.model.define(
     'process',
     {
-      date: {
-        type: DATE,
-        allowNull: false
-      },
+      date: DATE,
       basic: {
         type: INTEGER,
         allowNull: false,
@@ -34,6 +31,7 @@ module.exports = app => {
       ],
       getterMethods: {
         viewDate() {
+          console.log(this)
           return moment(this.date).format('YYYY年MM月DD日')
         }
       }
