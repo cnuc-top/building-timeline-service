@@ -32,8 +32,8 @@
     "node": ">=8.9.0"
   },
   "scripts": {
-    "start": "egg-scripts start --daemon --title=egg-server-interceptor-service",
-    "stop": "egg-scripts stop --title=egg-server-interceptor-service",
+    "start": "egg-scripts start --title=building-timeline-service",
+    "stop": "egg-scripts stop --title=building-timeline-service",
     "dev": "egg-bin dev --port 7301",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",

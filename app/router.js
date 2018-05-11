@@ -13,7 +13,6 @@ module.exports = app => {
   router.get('/v1/user', islogin, controller.user.user)
   router.put('/v1/user', islogin, controller.user.update)
 
-  // router.get('/addbuilds', controller.home.addbuilds)
   router.get('/v1/buildings', controller.building.list)
   router.get('/v1/buildings/:id', controller.building.id)
   router.get('/v1/buildings/:bid/contributes', controller.building.contributes)
