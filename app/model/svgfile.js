@@ -1,6 +1,6 @@
 module.exports = app => {
   const { STRING, TEXT, INTEGER, BOOLEAN, DATE } = app.Sequelize
-  const { SVGFILE_TYPE } = require('../common/const')
+  const { SVGFILE_TYPE } = require('../common/const/cnuc')
   const Svgfile = app.model.define('svgfiles', {
     content: {
       type: TEXT,
