@@ -27,11 +27,11 @@ class BuildingController extends Controller {
 
   async contributes() {
     const { ctx } = this
-    const { bid } = ctx.params
+    const { id } = ctx.params
     const data = await ctx.model.Contribute.findAll({
       attributes: ['date', 'content', 'picUrl', 'type'],
       where: {
-        bid
+        bid: id
       }
     })
     ctx.body = data
