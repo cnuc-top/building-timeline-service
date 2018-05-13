@@ -1,16 +1,90 @@
 'use strict'
 
 const Controller = require('egg').Controller
+const { removeProperty } = require('../utils')
 
 class BuildingController extends Controller {
+  async create() {
+    const { ctx } = this
+    const { id } = ctx.params
+
+    const {
+      name,
+      code,
+      company,
+      picUrl,
+      city,
+      width,
+      height,
+      layers,
+      isShow,
+      address
+    } = ctx.request.body
+
+    const ret = await ctx.model.Building.create({
+      name,
+      code,
+      company,
+      picUrl,
+      city,
+      width,
+      height,
+      layers,
+      isShow,
+      address
+    })
+
+    ctx.body = { id: ret.id }
+  }
+
+  async update() {
+    const { ctx } = this
+    const { id } = ctx.params
+
+    const {
+      name,
+      code,
+      company,
+      picUrl,
+      city,
+      width,
+      height,
+      layers,
+      isShow,
+      address
+    } = ctx.request.body
+
+    const ret = await ctx.model.Building.update(
+      {
+        name,
+        code,
+        company,
+        picUrl,
+        city,
+        width,
+        height,
+        layers,
+        isShow,
+        address
+      },
+      {
+        where: { id }
+      }
+    )
+
+    ctx.body = { id }
+  }
+
   async list() {
     const { ctx } = this
     const { city } = ctx.query
-    const data = await ctx.model.Building.findAll({
+    let where = { city }
+    where = removeProperty(where)
+
+    const list = await ctx.model.Building.findAll({
+      ...ctx.page,
       order: [['height', 'DESC']],
-      where: {
-        city
-      },
+      where,
       include: [
         {
           model: ctx.model.Svgfile,
@@ -22,7 +96,16 @@ class BuildingController extends Controller {
         }
       ]
     })
-    ctx.body = data
+
+    const total = await ctx.model.Building.count({ where })
+    ctx.body = {
+      code: 0,
+      data: {
+        ...ctx.page,
+        total,
+        list
+      }
+    }
   }
 
   async contributes() {
@@ -72,7 +155,7 @@ class BuildingController extends Controller {
       width,
       height,
       layers,
-      svgfiles,
+      svgfiles
     } = data
 
     ctx.body = {

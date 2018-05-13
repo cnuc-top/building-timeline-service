@@ -13,6 +13,16 @@ function readText(pathname) {
   return bin
 }
 
+function removeProperty(object) {
+  for (let key of Object.keys(object)) {
+    if (object[key] === '' || object[key] === undefined) {
+      delete object[key]
+    }
+  }
+  return object
+}
+
 module.exports = {
-  readText
+  readText,
+  removeProperty
 }

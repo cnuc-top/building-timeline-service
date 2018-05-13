@@ -3,7 +3,8 @@
 module.exports = app => {
   const { router, controller, middleware } = app
   const islogin = middleware.islogin()
-
+  const page = middleware.page()
+  
   router.get('/', controller.home.index)
   router.get('/v1/wx-login', controller.user.wxLogin)
   router.get('/v1/cos_auth', controller.user.cos_auth)
@@ -12,9 +13,9 @@ module.exports = app => {
   // router.get('/v1/user/:userid', controller.user.info)
   router.put('/v1/user', islogin, controller.user.update)
 
-  // router.post('/v1/buildings', controller.building.create)
-  // router.put('/v1/buildings/:id', controller.building.update)
-  router.get('/v1/buildings', controller.building.list)
+  router.post('/v1/buildings', controller.building.create)
+  router.put('/v1/buildings/:id', controller.building.update)
+  router.get('/v1/buildings', page, controller.building.list)
   router.get('/v1/buildings/:id', controller.building.id)
   router.get('/v1/buildings/:id/contributes', controller.building.contributes)
 

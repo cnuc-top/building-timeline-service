@@ -17,16 +17,7 @@ module.exports = app => {
         allowNull: false
       },
       picUrl: {
-        type: STRING(255),
-        allowNull: false
-      },
-      webUrl: {
-        type: STRING(255),
-        allowNull: false
-      },
-      company: {
-        type: STRING(255),
-        allowNull: false
+        type: STRING(255)
       },
       height: {
         type: FLOAT,
@@ -39,6 +30,15 @@ module.exports = app => {
       layers: {
         type: INTEGER,
         allowNull: false
+      },
+      address: {
+        type: STRING(255),
+        defaultValue: ''
+      },
+      isShow: {
+        type: Boolean,
+        allowNull: false,
+        defaultValue: false
       }
     },
     {

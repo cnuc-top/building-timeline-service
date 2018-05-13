@@ -31,7 +31,6 @@ module.exports = app => {
       ],
       getterMethods: {
         viewDate() {
-          console.log(this)
           return moment(this.date).format('YYYY年MM月DD日')
         }
       }
