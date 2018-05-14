@@ -6,7 +6,6 @@ const { removeProperty } = require('../utils')
 class BuildingController extends Controller {
   async create() {
     const { ctx } = this
-    const { id } = ctx.params
 
     const {
       name,
@@ -88,7 +87,7 @@ class BuildingController extends Controller {
       include: [
         {
           model: ctx.model.Svgfile,
-          attributes: ['type', 'content', 'fill']
+          attributes: ['id', 'type', 'content', 'fill']
         },
         {
           model: ctx.model.Process,

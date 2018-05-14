@@ -29,9 +29,9 @@ module.exports = app => {
   // router.get('/v1/citys', controller.city.list)
   // router.get('/v1/citys/:id', controller.city.list)
 
-  // router.post('/v1/svgfiles', controller.svgfile.create)
-  // router.delete('/v1/svgfiles', controller.svgfile.delete)
-  // router.put('/v1/svgfiles/:id', controller.svgfile.update)
+  router.post('/v1/svgfiles', controller.svgfile.create)
+  router.delete('/v1/svgfiles/:id', controller.svgfile.delete)
+  router.put('/v1/svgfiles/:id', controller.svgfile.update)
 
   // router.post('/v1/weblinks', controller.weblink.create)
   // router.delete('/v1/weblinks', controller.weblink.delete)
