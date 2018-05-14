@@ -18,6 +18,9 @@ module.exports = app => {
   router.get('/v1/buildings', page, controller.building.list)
   router.get('/v1/buildings/:id', controller.building.id)
   router.get('/v1/buildings/:id/contributes', controller.building.contributes)
+  router.get('/v1/buildings/:id/companies', controller.building.companies)
+  router.post('/v1/buildings/:id/companies', controller.building.companiesCreate)
+  router.delete('/v1/buildings/:id/companies', controller.building.companiesDelete)
 
   router.post('/v1/processes', controller.process.create)
   router.delete('/v1/processes/:id', controller.process.delete)
@@ -38,14 +41,14 @@ module.exports = app => {
   // router.get('/v1/weblinks', controller.weblink.list)
   
   router.post('/v1/contributes', controller.contribute.create)
-  // router.delete('/v1/contributes/:id', controller.contribute.delete)
-  // router.put('/v1/contributes/:id', controller.contribute.edit)
-  // router.get('/v1/contributes', controller.contribute.create)
+  router.delete('/v1/contributes/:id', controller.contribute.delete)
+  router.put('/v1/contributes/:id', controller.contribute.update)
+  router.get('/v1/contributes', page, controller.contribute.list)
 
-  // router.post('/v1/companies', controller.company.create)
-  // router.delete('/v1/companies/:id', controller.company.delete)
-  // router.put('/v1/companies/:id', controller.company.edit)
-  // router.get('/v1/companies', controller.company.create)
+  router.post('/v1/companies', controller.company.create)
+  router.delete('/v1/companies/:id', controller.company.delete)
+  router.put('/v1/companies/:id', controller.company.update)
+  router.get('/v1/companies', controller.company.list)
 
   router.get('/v1/upload/token', controller.upload.token)
 }

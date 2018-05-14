@@ -107,18 +107,6 @@ class BuildingController extends Controller {
     }
   }
 
-  async contributes() {
-    const { ctx } = this
-    const { id } = ctx.params
-    const data = await ctx.model.Contribute.findAll({
-      attributes: ['date', 'content', 'picUrl', 'type'],
-      where: {
-        bid: id
-      }
-    })
-    ctx.body = data
-  }
-
   async id() {
     const { ctx } = this
     const { id } = ctx.params
@@ -170,6 +158,37 @@ class BuildingController extends Controller {
       svgfiles,
       processes
     }
+  }
+
+  async contributes() {
+    const { ctx } = this
+    const { id } = ctx.params
+    const data = await ctx.model.Contribute.findAll({
+      attributes: ['id', 'date', 'content', 'picUrl', 'type'],
+      where: {
+        bid: id
+      }
+    })
+    ctx.body = data
+  }
+
+  async companies() {
+    const { ctx } = this
+    const { id } = ctx.params
+    const data = await ctx.model.Company.findAll({
+      where: {
+        bid: id
+      }
+    })
+    ctx.body = data
+  }
+
+  async companiesCreate() {
+
+  }
+
+  async companiesDelete() {
+
   }
 }
 

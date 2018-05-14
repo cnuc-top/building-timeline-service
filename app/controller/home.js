@@ -11,9 +11,11 @@ class HomeController extends Controller {
     // await ctx.model.SocialOauth.sync({ force: true })
 
     // await ctx.model.Building.sync({ force: true })
+    // await ctx.model.BuildingCompany.sync({ force: true })
     // await ctx.model.Process.sync({ force: true })
     // await ctx.model.Svgfile.sync({ force: true })
-    await ctx.model.Contribute.sync({ force: true })
+    // await ctx.model.Contribute.sync({ force: true })
+    // await ctx.model.Company.sync({ force: true })
 
     const { name, version } = pkg
     ctx.body = { name, version }
