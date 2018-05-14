@@ -19,10 +19,9 @@ module.exports = app => {
   router.get('/v1/buildings/:id', controller.building.id)
   router.get('/v1/buildings/:id/contributes', controller.building.contributes)
 
-  router.post('/v1/process', controller.process.create)
-  // router.delete('/v1/process', controller.process.delete)
-  // router.put('/v1/process', controller.process.edit)
-  // router.get('/v1/process', controller.process.list)
+  router.post('/v1/processes', controller.process.create)
+  router.delete('/v1/processes/:id', controller.process.delete)
+  router.put('/v1/processes/:id', controller.process.update)
   
   // router.post('/v1/citys', controller.city.create)
   // router.put('/v1/citys/:id', controller.city.create)

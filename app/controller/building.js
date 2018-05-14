@@ -91,7 +91,7 @@ class BuildingController extends Controller {
         },
         {
           model: ctx.model.Process,
-          attributes: ['date', 'basic', 'layers', 'seconds']
+          attributes: ['id', 'date', 'basic', 'layers', 'seconds']
         }
       ]
     })
