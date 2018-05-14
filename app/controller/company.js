@@ -19,7 +19,7 @@ class CompanyController extends Controller {
   async delete() {
     const { ctx } = this
     const { id } = ctx.params
-    const ret = await ctx.model.Company.destroy({
+    await ctx.model.Company.destroy({
       where: {
         id
       }

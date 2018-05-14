@@ -7,7 +7,7 @@ module.exports = app => {
 
   BuildingCompany.associate = function() {
     app.model.BuildingCompany.belongsTo(app.model.Company, {
-      as: 'company',
+      as: 'companies',
       foreignKey: 'cid'
     })
     app.model.BuildingCompany.belongsTo(app.model.Building, {

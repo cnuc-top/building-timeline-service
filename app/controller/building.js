@@ -124,10 +124,6 @@ class BuildingController extends Controller {
         {
           model: ctx.model.Svgfile,
           attributes: ['type', 'content', 'fill']
-        },
-        {
-          model: ctx.model.Process,
-          attributes: ['date', 'basic', 'layers', 'seconds']
         }
       ]
     })
@@ -146,6 +142,7 @@ class BuildingController extends Controller {
     } = data
 
     ctx.body = {
+      id,
       name,
       code,
       company,
@@ -174,21 +171,42 @@ class BuildingController extends Controller {
 
   async companies() {
     const { ctx } = this
-    const { id } = ctx.params
-    const data = await ctx.model.Company.findAll({
+    const { id: bid } = ctx.params
+    const data = await ctx.model.BuildingCompany.findAll({
       where: {
-        bid: id
+        bid
+      },
+      include: {
+        model: ctx.model.Company,
+        as: 'companies',
+        attributes: ['id', 'name', 'type']
       }
     })
     ctx.body = data
   }
 
   async companiesCreate() {
+    const { ctx } = this
+    const { id: bid } = ctx.params
+    const { id: cid } = ctx.request.body
 
+    const ret = await ctx.model.BuildingCompany.create({
+      bid,
+      cid
+    })
+    ctx.body = { id: ret.id }
   }
 
   async companiesDelete() {
+    const { ctx } = this
+    const { id } = ctx.params
 
+    await ctx.model.BuildingCompany.destroy({
+      where: {
+        id
+      }
+    })
+    ctx.body = { id }
   }
 }
 
