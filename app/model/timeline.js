@@ -5,7 +5,7 @@ module.exports = app => {
   const { STRING, TEXT, INTEGER, BOOLEAN, DATE } = app.Sequelize
 
   const Timeline = app.model.define(
-    'Timelines',
+    'timelines',
     {
       date: DATE,
       picUrl: STRING(255),

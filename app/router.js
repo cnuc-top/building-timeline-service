@@ -45,5 +45,7 @@ module.exports = app => {
   router.put('/v1/companies/:id', controller.company.update)
   router.get('/v1/companies', controller.company.list)
 
+  router.post('/v1/attachments', controller.attachment.create)
+
   router.get('/v1/upload/token', controller.upload.token)
 }

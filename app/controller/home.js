@@ -14,8 +14,10 @@ class HomeController extends Controller {
     // await ctx.model.BuildingCompany.sync({ force: true })
     // await ctx.model.Process.sync({ force: true })
     // await ctx.model.Svgfile.sync({ force: true })
-    // await ctx.model.Contribute.sync({ force: true })
+    // await ctx.model.Timeline.sync({ force: true })
     // await ctx.model.Company.sync({ force: true })
+
+    await ctx.model.Attachment.sync({ force: true })
 
     const { name, version } = pkg
     ctx.body = { name, version }

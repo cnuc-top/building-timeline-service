@@ -11,11 +11,11 @@ module.exports = app => {
         type: STRING,
         allowNull: false
       },
-      fileUrl: {
+      url: {
         type: STRING,
         allowNull: false
       },
-      filesize: {
+      size: {
         type: INTEGER,
         defaultValue: 0
       },

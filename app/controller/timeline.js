@@ -1,7 +1,7 @@
 const Controller = require('egg').Controller
 const to = require('../utils/to')
 
-class contributeController extends Controller {
+class TimelineController extends Controller {
   async create() {
     const { ctx } = this
     const { bid, content, picUrl, date, type } = ctx.request.body
@@ -15,7 +15,7 @@ class contributeController extends Controller {
       type
     }
 
-    const ret = await ctx.model.Contribute.create(create)
+    const ret = await ctx.model.Timeline.create(create)
     ctx.body = { id: ret.id }
   }
 
@@ -23,7 +23,7 @@ class contributeController extends Controller {
     const { ctx } = this
     const { id } = ctx.params
 
-    await ctx.model.Contribute.destroy({
+    await ctx.model.Timeline.destroy({
       where: {
         id
       }
@@ -36,7 +36,7 @@ class contributeController extends Controller {
     const { id } = ctx.params
     const { bid, content, picUrl, date, type, isActive } = ctx.request.body
 
-    const ret = await ctx.model.Contribute.update(
+    const ret = await ctx.model.Timeline.update(
       {
         bid,
         content,
@@ -56,7 +56,7 @@ class contributeController extends Controller {
   async list() {
     const { ctx } = this
     const where = {}
-    const list = await ctx.model.Contribute.findAll({
+    const list = await ctx.model.Timeline.findAll({
       ...ctx.page,
       order: [['created_at', 'DESC']],
       include: [
@@ -71,7 +71,7 @@ class contributeController extends Controller {
       ]
     })
 
-    const total = await ctx.model.Contribute.count({ where })
+    const total = await ctx.model.Timeline.count({ where })
 
     ctx.body = {
       code: 0,
@@ -84,4 +84,4 @@ class contributeController extends Controller {
   }
 }
 
-module.exports = contributeController
+module.exports = TimelineController
