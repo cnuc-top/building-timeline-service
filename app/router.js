@@ -13,6 +13,15 @@ module.exports = app => {
   // router.get('/v1/user/:userid', controller.user.info)
   router.put('/v1/user', islogin, controller.user.update)
 
+  // router.post('/v1/sign-in', controller.account.signIn)
+  
+  router.post('/v1/verify-code/sms-code', controller.verify.smsCode)
+  // router.post('/v1/verify-code/email-code', controller.verify.emailCode)
+
+  // router.post('/v1/api/auth/user-current', controller.auth.userCurrent)
+  // router.post('/v1/api/auth/change-password', controller.auth.changePassword)
+  // router.post('/v1/api/auth/change-email', controller.auth.changeEmail)
+
   router.post('/v1/buildings', controller.building.create)
   router.put('/v1/buildings/:id', controller.building.update)
   router.get('/v1/buildings', page, controller.building.list)
