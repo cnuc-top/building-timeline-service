@@ -4,19 +4,33 @@ const to = require('../utils/to')
 class TimelineController extends Controller {
   async create() {
     const { ctx } = this
-    const { bid, content, picUrl, date, type } = ctx.request.body
+    const { bid, content, attachments, date, type } = ctx.request.body
 
     const create = {
       bid,
       content,
-      picUrl,
       userid: 1,
       date,
       type
     }
 
     const ret = await ctx.model.Timeline.create(create)
-    ctx.body = { id: ret.id }
+    const { id: tid } = ret
+
+    await ctx.model.Attachment.update(
+      {
+        tid
+      },
+      {
+        where: {
+          id: {
+            in: attachments
+          }
+        }
+      }
+    )
+
+    ctx.body = { id: tid }
   }
 
   async delete() {
@@ -67,6 +81,10 @@ class TimelineController extends Controller {
         {
           model: ctx.model.Building,
           attributes: ['id', 'name']
+        },
+        {
+          model: ctx.model.Attachment,
+          attributes: ['id', 'url', 'size']
         }
       ]
     })

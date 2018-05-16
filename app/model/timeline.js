@@ -42,6 +42,9 @@ module.exports = app => {
     app.model.Timeline.belongsTo(app.model.User, {
       foreignKey: 'userid'
     })
+    app.model.Timeline.hasMany(app.model.Attachment, {
+      foreignKey: 'tid'
+    })
   }
   return Timeline
 }

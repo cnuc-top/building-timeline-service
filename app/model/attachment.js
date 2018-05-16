@@ -26,17 +26,10 @@ module.exports = app => {
     },
     {
       indexes: [],
-      getterMethods: {
-        viewDate() {
-          return moment(this.date).format('YYYY年MM月DD日')
-        }
-      }
+      getterMethods: {}
     }
   )
   Attachment.associate = function() {
-    app.model.Attachment.belongsTo(app.model.Timeline, {
-      foreignKey: 'tid'
-    })
     app.model.Attachment.belongsTo(app.model.User, {
       foreignKey: 'userid'
     })
