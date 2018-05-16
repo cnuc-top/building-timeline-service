@@ -35,15 +35,10 @@ module.exports = app => {
   router.delete('/v1/svgfiles/:id', controller.svgfile.delete)
   router.put('/v1/svgfiles/:id', controller.svgfile.update)
 
-  // router.post('/v1/weblinks', controller.weblink.create)
-  // router.delete('/v1/weblinks', controller.weblink.delete)
-  // router.put('/v1/weblinks/:id', controller.weblink.update)
-  // router.get('/v1/weblinks', controller.weblink.list)
-  
-  router.post('/v1/contributes', controller.contribute.create)
-  router.delete('/v1/contributes/:id', controller.contribute.delete)
-  router.put('/v1/contributes/:id', controller.contribute.update)
-  router.get('/v1/contributes', page, controller.contribute.list)
+  router.post('/v1/timelines', controller.timeline.create)
+  router.delete('/v1/timelines/:id', controller.timeline.delete)
+  router.put('/v1/timelines/:id', controller.timeline.update)
+  router.get('/v1/timelines', page, controller.timeline.list)
 
   router.post('/v1/companies', controller.company.create)
   router.delete('/v1/companies/:id', controller.company.delete)

@@ -1,10 +1,11 @@
 const moment = require('moment')
+const { TIMELINE_TYPE } = require('../common/const/cnuc')
 
 module.exports = app => {
   const { STRING, TEXT, INTEGER, BOOLEAN, DATE } = app.Sequelize
 
-  const Contribute = app.model.define(
-    'contributes',
+  const Timeline = app.model.define(
+    'Timelines',
     {
       date: DATE,
       picUrl: STRING(255),
@@ -34,13 +35,13 @@ module.exports = app => {
       }
     }
   )
-  Contribute.associate = function() {
-    app.model.Contribute.belongsTo(app.model.Building, {
+  Timeline.associate = function() {
+    app.model.Timeline.belongsTo(app.model.Building, {
       foreignKey: 'bid'
     })
-    app.model.Contribute.belongsTo(app.model.User, {
+    app.model.Timeline.belongsTo(app.model.User, {
       foreignKey: 'userid'
     })
   }
-  return Contribute
+  return Timeline
 }

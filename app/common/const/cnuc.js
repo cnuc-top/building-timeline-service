@@ -1,19 +1,25 @@
 // 贡献类型
-const CONTRIBUTE_TYPE = {
+const TIMELINE_TYPE = {
   DESIGN: 1,
   PROCESS: 2
 }
 
-const CONTRIBUTE_TYPE_DETAIL = [
+const TIMELINE_TYPE_DETAIL = [
   {
-    id: CONTRIBUTE_TYPE.DESIGN,
+    id: TIMELINE_TYPE.DESIGN,
     name: '效果图'
   },
   {
-    id: CONTRIBUTE_TYPE.PROCESS,
+    id: TIMELINE_TYPE.PROCESS,
     name: '进度图'
   }
 ]
+
+// 贡献类型
+const ATTACHMENT_TYPE = {
+  IMAGE: 1,
+  VIDEO: 2
+}
 
 // SVG 类型
 const SVGFILE_TYPE = {
@@ -81,8 +87,9 @@ const COMPANY_TYPE_DETAIL = [
 ]
 
 module.exports = {
-  CONTRIBUTE_TYPE,
-  CONTRIBUTE_TYPE_DETAIL,
+  TIMELINE_TYPE,
+  TIMELINE_TYPE_DETAIL,
+  ATTACHMENT_TYPE,
   SVGFILE_TYPE,
   SVGFILE_TYPE_DETAIL,
   WEBLINK_TYPE,
